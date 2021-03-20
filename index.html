@@ -26,17 +26,19 @@
   
       <ul id="slide-out" class="sidenav sidenav-fixed">
         <h3>Search for City.</h3>
-                <div class="input-field col s12">
+                <div class="input-field col s12" id="searchsave">
                     <label for="current-search">City Name</label>
                     <input type="text" id="city-search" name="current-search">
                     
                     <button type="submit" class="search-button">Search</button>
+
+                    <h4 class="col m4" id="stored-searches"></h4>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
   
         </div>          
         <div class="s12 m4 l8">
-        <h4 id="city-name"></h4> <img src="" alt="" class="weatherIcon">
+        <h4 id="city-name"></h4> <h4 id = "date-today"></h4><img src="" alt="" class="weatherIcon">
 
           <table>
                
@@ -51,12 +53,12 @@
                 <td id="windInput"></td>
               </tr>
               <tr>
-                <td>humidity</td>
+                <td>Humidity</td>
                 <td id="humidityInput"></td>
               </tr>
               <tr>
                 <td>UV Index</td>
-                <td id="uvIndexInput"></td>
+                <td id="uvIndexInput" class=""></td>
               </tr>
             </tbody>
           </table>
@@ -71,7 +73,7 @@
           <div class="row">
             <div class="col l6 s12">
               <h5 class="white-text">5 Day Forecast</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <div class="l8" id="forecast-card"></div>
             </div>
             
           </div>
@@ -83,6 +85,7 @@
           </div>
         </div>
       </footer>
+      <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="script.js"></script>
 </body>
