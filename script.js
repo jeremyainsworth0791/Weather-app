@@ -17,7 +17,7 @@ window.addEventListener("load",function(){
     var cityButtons = document.getElementsByClassName("stored-buttons");
    
    
-    // api.openweathermap.org/data/2.5/weather?q={city name}&appid=820da3b7a8a561cc5f603199f9d93f15
+   // Searches the weather to provide daily forecast and provide a coordinate to call the UV index function
    
     function searchWeather(searchedName) {
         var fetchUrl = `http://api.openweathermap.org/data/2.5/weather?q=${searchedName}&units=imperial&appid=820da3b7a8a561cc5f603199f9d93f15`
@@ -28,8 +28,7 @@ window.addEventListener("load",function(){
         })
         .then(function (data){
             console.log(data)
-            //parse data 
-                // define each element
+            
                 dayDate.innerHTML = currentDate;
             
             postWeather(data);
@@ -37,9 +36,7 @@ window.addEventListener("load",function(){
             getUVIndex(coordinate); 
         });
         
-        // append all the elements together
-        // get the uv index and append that
-        // get the forecast
+        
 
     
     }
@@ -48,13 +45,12 @@ window.addEventListener("load",function(){
          console.log(dataWeather)
          
          cityName.innerHTML= dataWeather.name;
-        //  cityImg.src = dataWeather.weather[0].icon;
          cityTemp.innerHTML= dataWeather.main.temp;
          cityWind.innerHTML= dataWeather.wind.speed+ " MPH";
          cityHum.innerHTML= dataWeather.main.humidity+ "%";
 
     }
-
+    // function provides the uv index to the daily weather
     function getUVIndex(coordinate) {
         console.log(coordinate);
         fetchUrl= `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&exclude=hourly,daily&appid=820da3b7a8a561cc5f603199f9d93f15`
@@ -67,7 +63,7 @@ window.addEventListener("load",function(){
             uvStyles(data.current.uvi);
         })
     }
-    //function for displaying teh 5-day forecast
+    //function for displaying teh 5-day forecast requrires further work to accomplish functionality
     function getForecast(searchedName) {
         fetchUrl= `api.openweathermap.org/data/2.5/forecast/daily?q=${searchedName}&cnt=5&units=imperial&appid=820da3b7a8a561cc5f603199f9d93f15`
         fetch(fetchUrl)
@@ -95,7 +91,7 @@ window.addEventListener("load",function(){
          })
 
     }
-
+    // function that applies styling to the uv index to call attention to the different levels
     function uvStyles(uvIndex){
 
     
@@ -128,7 +124,8 @@ window.addEventListener("load",function(){
     
         }
     }
-
+    
+    // function to store the cities previously searched for
     function storeButtons(cityToStore){
 
         var savedCities = localStorage.getItem("city list");
@@ -147,7 +144,7 @@ window.addEventListener("load",function(){
     
         }
     }
-    
+    //function to create and print user searches as buttons
     function printStoreButtons(){
 
         var savedCities = localStorage.getItem("city list");
@@ -178,7 +175,7 @@ window.addEventListener("load",function(){
     
         }
     }
-
+    //function to add previous user searches
     function updateSavedList(){
 
         var savedCities = localStorage.getItem("city list");
@@ -204,7 +201,7 @@ window.addEventListener("load",function(){
     
         }
     }
-
+    //search button 
     searchButton.addEventListener("click", function(){
 
        var nameSearch = document.getElementById("city-search").value;
